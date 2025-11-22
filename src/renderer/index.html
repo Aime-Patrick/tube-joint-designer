@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tube Joint Designer</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; font-src 'self';"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../node_modules/three/build/three.module.js",
+          "three/examples/jsm/": "../../node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <header class="sidebar__header">
+          <h1>Tube Joint Designer</h1>
+          <p>Create and explore square/rectangular tube joints.</p>
+        </header>
+
+        <section class="panel">
+          <h2>Tube Parameters</h2>
+          <label>
+            Tube Type
+            <select id="tube-type">
+              <option value="rectangular">Rectangular</option>
+              <option value="square">Square</option>
+            </select>
+          </label>
+          <label>
+            Width (mm)
+            <input id="tube-width" type="number" min="10" value="80" />
+          </label>
+          <label>
+            Height (mm)
+            <input id="tube-height" type="number" min="10" value="60" />
+          </label>
+          <label>
+            Thickness (mm)
+            <input id="tube-thickness" type="number" min="2" value="4" />
+          </label>
+          <label>
+            Length (mm)
+            <input id="tube-length" type="number" min="50" value="300" />
+          </label>
+          <button id="add-tube-btn" class="primary">Add Tube</button>
+          <button id="delete-tube-btn" class="danger">Delete Selected Tube</button>
+        </section>
+
+        <section class="panel">
+          <h2>Joint & Rotation</h2>
+          <label>
+            Snap Angle
+            <select id="snap-angle">
+              <option value="30">30°</option>
+              <option value="45" selected>45°</option>
+              <option value="90">90°</option>
+              <option value="135">135°</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+          <label id="custom-angle-group" class="hidden">
+            Custom Angle (°)
+            <input id="custom-angle" type="number" value="15" />
+          </label>
+          <label>
+            Rotate Around Axis
+            <select id="rotation-axis">
+              <option value="x">X</option>
+              <option value="y" selected>Y</option>
+              <option value="z">Z</option>
+            </select>
+          </label>
+          <div class="inline-input">
+            <input id="manual-angle" type="number" value="45" />
+            <button id="apply-rotation-btn">Rotate</button>
+          </div>
+          <div class="inline-actions">
+            <button data-transform="translate" class="ghost">Move Mode</button>
+            <button data-transform="rotate" class="ghost">Rotate Gizmo</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Actions</h2>
+          <div class="inline-actions">
+            <button id="undo-btn" class="ghost">Undo</button>
+            <button id="redo-btn" class="ghost">Redo</button>
+          </div>
+          <div class="inline-actions">
+            <button id="wireframe-btn" class="ghost">Wireframe</button>
+            <button id="reset-view-btn" class="ghost">Reset View</button>
+          </div>
+          <button id="recover-tubes-btn" class="ghost">Recover Lost Tubes</button>
+        </section>
+
+        <section class="panel info-panel">
+          <h2>Selection</h2>
+          <div id="selection-summary">
+            No tube selected.
+          </div>
+        </section>
+
+        <section class="panel info-panel">
+          <h2>Hints</h2>
+          <ul>
+            <li>Click empty space to place a new tube at that location.</li>
+            <li>Left click a tube to select it.</li>
+            <li>Use gizmos to move/rotate selected tubes.</li>
+            <li>Drag close to another tube to preview a joint.</li>
+            <li>Right-click or Shift+click to deselect.</li>
+            <li>Use Undo/Redo to experiment freely.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="viewport">
+        <div id="scene-container"></div>
+        <div id="overlay-info"></div>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
+

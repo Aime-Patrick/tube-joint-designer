@@ -1,0 +1,20 @@
+appId: com.example.tubejointdesigner
+productName: Tube Joint Designer
+directories:
+  output: dist
+files:
+  - package.json
+  - src/**
+  - node_modules/**
+extraMetadata:
+  main: src/main/main.js
+win:
+  target:
+    - nsis
+mac:
+  target:
+    - dmg
+linux:
+  target:
+    - AppImage
+

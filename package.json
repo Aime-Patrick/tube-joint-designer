@@ -1,0 +1,26 @@
+{
+  "name": "tube-joint-designer",
+  "version": "0.1.0",
+  "description": "Interactive Electron + Three.js tube joint visualizer",
+  "main": "src/main/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "build:electron": "electron-builder"
+  },
+  "keywords": [
+    "electron",
+    "three.js",
+    "tubes",
+    "desktop"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron": "^39.2.2",
+    "three": "^0.181.2"
+  }
+}
